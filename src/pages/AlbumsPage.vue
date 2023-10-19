@@ -6,7 +6,9 @@ export default {
 
   computed: {
     albums() {
-      return this.$store.state.AlbumModule.albums;
+      return this.$store.state.AlbumModule.albums.filter((album) =>
+        album.title.toLowerCase().includes(this.$store.state.searchQuery.toLowerCase())
+      );
     },
   },
 };

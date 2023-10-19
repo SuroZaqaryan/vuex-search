@@ -6,8 +6,10 @@ export default {
 
   computed: {
     posts() {
-      return this.$store.state.PostsModule.posts;
-    },
+      return this.$store.state.PostsModule.posts.filter((post) =>
+        post.title.toLowerCase().includes(this.$store.state.searchQuery.toLowerCase())
+      );
+    }
   },
 };
 </script>

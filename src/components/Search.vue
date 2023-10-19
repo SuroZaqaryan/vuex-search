@@ -1,13 +1,41 @@
 <script>
+export default {
+  watch: { 
+  '$route': {
+      handler() {
+        if(this.searchQuery.length) {
+          this.$store.commit('setSearchQuery', '');
+        }
+      }
+    }
+  },
+
+  computed: {
+    searchQuery: {
+      get() {
+        return this.$store.state.searchQuery;
+      },
+
+      set(query) {
+        this.$store.commit('setSearchQuery', query);
+      },
+    },
+  },
+}
 </script>
 
 <template>
   <div class="search-container">
-    <input type="text" placeholder="Search..." name="search" class="search">
+    <input 
+      type="text" 
+      v-model="searchQuery" 
+      placeholder="Search..." 
+      class="search"
+    >
 
     <div class="btns">
-      <button @click="$router.push('/posts')">Posts</button>
-      <button @click="$router.push('/albums')">Albums</button>
+      <button @click="$router.push('posts')">Posts</button>
+      <button @click="$router.push('albums')">Albums</button>
     </div>
   </div>
 </template>
