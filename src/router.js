@@ -5,14 +5,14 @@ Vue.use(VueRouter);
 let router = new VueRouter({
   routes: [
     {
-      path: "/",
-      name: "Page1",
-      component: () => import("./components/Page1")
+      path: "/posts",
+      name: "PostsPage",
+      component: () => import("./pages/PostsPage")
     },
     {
-      path: "/update",
-      name: "Page2",
-      component: () => import("./components/Page2")
+      path: "/albums",
+      name: "AlbumsPage",
+      component: () => import("./pages/AlbumsPage")
     }
   ]
 });
